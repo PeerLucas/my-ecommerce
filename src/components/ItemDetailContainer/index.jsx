@@ -1,10 +1,9 @@
+import React, {useState, useEffect} from "react";
 
-import ItemList from '../ItemList';
-import React, { useState, useEffect } from 'react';
-import Title from '../Title';
-import { useParams } from 'react-router-dom';
+import ItemDetail from "../ItemDetail";
+import { useParams } from "react-router-dom";
 
-const films = [
+const film = [
     { id: 1, image: "https://media.es.wired.com/photos/6324ebf464fe55a038bdcb09/1:1/w_1600,h_1600,c_limit/Beyonce%CC%81s-New-Album-Sparks-Conspiracy-Theories-Culture-970611876.jpg" , category:'artistas', title: "Beyonce" },
     { id: 2, image: "https://popular2.nyc3.digitaloceanspaces.com/wp-content/uploads/2023/02/13105621/rihana-1000x600.jpg",category:'artistas', title: "Rihanna" },
     { id: 3, image: "https://cloudfront-us-east-1.images.arcpublishing.com/infobae/FJC3LIADHFDRVCUBQQXVIFTOXE.jpg", category: 'artistas', title: "Mac Miller" },
@@ -14,36 +13,24 @@ const films = [
 
 ];
 
+export const ItemDetailContainer = () =>{
 
-export const ItemListContainer = ({ texto }) => {
+    const [data, setData] = useState({});
+    const { detalleId } = useParams();
 
-    const [data, setData] = useState([]);
+    useEffect(() =>{
+        const getData = new Promise(resolve =>{
+            setTimeout(() =>{
+                resolve(film);
+            }, 10);        
+    });
 
-    const {artistasId} = useParams();
-
-    useEffect(() => {
-        const getData = new Promise(resolve => {
-            setTimeout(() => {
-                resolve(films);
-            }, 100);
-        });
-
-        if(artistasId){
-        getData.then(res => setData(res.filter(film => film.category === artistasId)));
-        }else{
-            getData.then(res => setData(res));
-        }
-
-    }, [artistasId])
-
-    return (
-        <>
-            <Title greeting={texto} />
-            <ItemList data={data} />
-        </>
-
-
+    getData.then(res => setData(res.find(film => film.id === parseInt(detalleId))));
+    }, [])
+    return(
+        <ItemDetail data={data}/>
     );
 }
 
-export default ItemListContainer;
+export default ItemDetailContainer;
+
