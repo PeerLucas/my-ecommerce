@@ -1,13 +1,14 @@
 import React from "react";
 import CartWidget from "../CartWidget"
 import { NavLink } from "react-router-dom";
+import './navBar.css'
 
 export const NavBar = () => {
     return (
         <div className="container">
             <nav className="nav">
                 <div className="nav_brand">
-                    <NavLink className="nav_link" to='/'> Play_Sound</NavLink>
+                    <NavLink className="nav_link" to='/'> PLAY SOUND</NavLink>
                 </div>
 
                 <ul className="nav_list">

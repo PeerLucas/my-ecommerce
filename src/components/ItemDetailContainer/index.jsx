@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 
+import './itemDetailContainer.css'
 import ItemDetail from "../ItemDetail";
 import { useParams } from "react-router-dom";
 

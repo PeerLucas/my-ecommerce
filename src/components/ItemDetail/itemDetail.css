@@ -1,7 +1,4 @@
-.container{
-    width: 98%;
-    margin: auto;
-}
+
 
 @media screen and (min-widht:768px)
 {
@@ -20,11 +17,16 @@
 
 .detail__image{
     width: 100%;
+    
 }
 
-.content{
+content{
     width: 100%;
+    color: black;
+    
+    
 }
+
 
 @media screen and (min-width: 768px){
     .detail__image{
@@ -33,6 +35,6 @@
 
     .content{
         padding-left: 3rem;
-        width: 50%;
+        width: 50%; 
     }
 }
